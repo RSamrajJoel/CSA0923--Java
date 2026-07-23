@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class NameSort {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] names = new String[5];
+
+        System.out.println("Enter 5 Names:");
+
+        for (int i = 0; i < 5; i++) {
+            names[i] = sc.nextLine();
+        }
+
+        System.out.print("Enter Order (A/D): ");
+        char ch = sc.next().charAt(0);
+
+        String temp;
+
+        if (ch == 'A' || ch == 'a') {
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = i + 1; j < 5; j++) {
+
+                    if (names[i].toLowerCase().charAt(0) > names[j].toLowerCase().charAt(0)) {
+                        temp = names[i];
+                        names[i] = names[j];
+                        names[j] = temp;
+                    }
+
+                }
+            }
+
+        } else if (ch == 'D' || ch == 'd') {
+
+            for (int i = 0; i < 4; i++) {
+                for (int j = i + 1; j < 5; j++) {
+
+                    if (names[i].toLowerCase().charAt(0) < names[j].toLowerCase().charAt(0)) {
+                        temp = names[i];
+                        names[i] = names[j];
+                        names[j] = temp;
+                    }
+
+                }
+            }
+
+        } else {
+            System.out.println("Invalid Choice");
+            return;
+        }
+
+        System.out.println("Sorted Names:");
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(names[i]);
+        }
+    }
+}
